@@ -80,15 +80,18 @@ export function Home() {
                 직접 방문하고 검증한 진짜 맛집만 소개해요
               </p>
             </button>
-            <div className="bg-card border border-border rounded-xl p-6 text-center">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <button
+              onClick={() => navigate('/reviews')}
+              className="bg-card border border-border rounded-xl p-6 text-center hover:border-primary/50 transition-all hover:scale-[1.02] group"
+            >
+              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
                 <span className="text-2xl">💬</span>
               </div>
-              <h3 className="font-bold mb-2">실시간 리뷰</h3>
+              <h3 className="font-bold mb-2 group-hover:text-primary transition-colors">실시간 리뷰</h3>
               <p className="text-sm text-muted-foreground">
                 다른 유저들의 생생한 리뷰를 확인하세요
               </p>
-            </div>
+            </button>
           </motion.div>
         </div>
       </section>

@@ -7,6 +7,7 @@ import { ReviewNew } from './pages/ReviewNew';
 import { Profile } from './pages/Profile';
 import { Curation } from './pages/Curation';
 import { NotFound } from './pages/NotFound';
+import { ReviewList } from './pages/ReviewList';
 import { NavBar } from './components/NavBar';
 
 function Layout({ children }: { children: React.ReactNode }) {
@@ -19,6 +20,14 @@ function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export const router = createBrowserRouter([
+  {
+    path: '/reviews',
+    element: (
+      <Layout>
+        <ReviewList />
+      </Layout>
+    ),
+  },
   {
     path: '/',
     element: (
