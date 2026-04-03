@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { CategoryCard } from '../components/CategoryCard';
+import { AIChatDialog } from '../components/AIChatDialog';
 import { Utensils, MapPin } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export function Home() {
   const navigate = useNavigate();
+  const [aiChatOpen, setAiChatOpen] = useState(false);
 
   return (
     <div className="min-h-screen pt-16">
@@ -59,15 +62,18 @@ export function Home() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="max-w-4xl mx-auto grid md:grid-cols-3 gap-6 mt-16"
           >
-            <div className="bg-card border border-border rounded-xl p-6 text-center">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <button
+              onClick={() => setAiChatOpen(true)}
+              className="bg-card border border-border rounded-xl p-6 text-center hover:border-primary/50 transition-all hover:scale-[1.02] group"
+            >
+              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
                 <span className="text-2xl">🤖</span>
               </div>
-              <h3 className="font-bold mb-2">AI 맞춤 추천</h3>
+              <h3 className="font-bold mb-2 group-hover:text-primary transition-colors">AI 맞춤 추천</h3>
               <p className="text-sm text-muted-foreground">
                 위치와 취향 기반으로 완벽한 맛집을 찾아드려요
               </p>
-            </div>
+            </button>
             <button
               onClick={() => navigate('/curation')}
               className="bg-card border border-border rounded-xl p-6 text-center hover:border-primary/50 transition-all hover:scale-[1.02] group"
@@ -92,6 +98,7 @@ export function Home() {
           </motion.div>
         </div>
       </section>
+      <AIChatDialog open={aiChatOpen} onOpenChange={setAiChatOpen} />
     </div>
   );
 }
